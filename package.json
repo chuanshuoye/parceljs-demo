@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
+    "build":"set NODE_ENV=production && parcel build index.html -d ./build",
     "test": "test"
   },
   "repository": {

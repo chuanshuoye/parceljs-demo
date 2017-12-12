@@ -3,10 +3,9 @@
 import Vue from 'vue'
 import App from './src/App'
 /* eslint-disable no-new */
-Vue.component("App",App)
-const AppMain=Vue.extend({
- template:"<App/>"
-});
-
-const component=new AppMain().$mount()
-document.getElementById('app').appendChild(component.$el)
+new Vue({
+ el:"#app",
+ render(h){
+   return <App title="标题"/>
+ }
+})

@@ -65,7 +65,36 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({7:[function(require,module,exports) {
+})({4:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  props: ["title"],
+  data: function data() {
+    return {
+      message: "hello world123!"
+    };
+  },
+  render: function render(h) {
+    return h(
+      "div",
+      null,
+      [h(
+        "h1",
+        null,
+        [this.title]
+      ), h(
+        "p",
+        null,
+        [this.message]
+      )]
+    );
+  }
+};
+},{}],5:[function(require,module,exports) {
 var global = (1,eval)("this");
 /*!
  * Vue.js v2.5.9
@@ -7201,30 +7230,6 @@ Vue$3.nextTick(function () {
 /*  */
 
 module.exports = Vue$3;
-},{}],4:[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  data: function data() {
-    return {
-      message: "hello world!"
-    };
-  },
-  render: function render(h) {
-    return h(
-      "div",
-      null,
-      [h(
-        "p",
-        null,
-        [{ message: message }]
-      )]
-    );
-  }
-};
 },{}],2:[function(require,module,exports) {
 "use strict";
 
@@ -7241,14 +7246,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /* eslint-disable no-new */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-_vue2.default.component("App", _App2.default);
-var AppMain = _vue2.default.extend({
-  template: "<App/>"
+new _vue2.default({
+  el: "#app",
+  render: function render(h) {
+    return h(
+      _App2.default,
+      {
+        attrs: { title: "\u6807\u9898" }
+      },
+      []
+    );
+  }
 });
-
-var component = new AppMain().$mount();
-document.getElementById('app').appendChild(component.$el);
-},{"vue":7,"./src/App":4}],0:[function(require,module,exports) {
+},{"./src/App":4,"vue":5}],0:[function(require,module,exports) {
 var global = (1,eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -7266,7 +7276,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent) {
-  var ws = new WebSocket('ws://localhost:56200/');
+  var ws = new WebSocket('ws://localhost:56914/');
   ws.onmessage = (e) => {
     var data = JSON.parse(e.data);
 
